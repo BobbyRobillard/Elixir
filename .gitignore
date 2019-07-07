@@ -1,0 +1,8 @@
+# Vagrant Settings
+.vagrant
+*.log
+
+# OS Related
+.DS_Store
+
+# 2019.07.07 - RCR
