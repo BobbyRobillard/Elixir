@@ -24,13 +24,21 @@
 ###############################################################################
 #                                 FIBONACCI                                   #
 ###############################################################################
-defmodule Fib do
-    def fib(n) do
-      case n do
-         {x} when x in 0..1 -> n
-          _ -> fib(n - 1) + fib(n - 2)
-      end
-    end
-end
-IO.puts(Fib.fib(4))
+# defmodule Fib do
+#     def fib(n) do
+#       case n do
+#          {x} when x in 0..1 -> n
+#           _ -> fib(n - 1) + fib(n - 2)
+#       end
+#     end
+# end
+# IO.puts(Fib.fib(4))
 ###############################################################################
+defmodule Fizbuzz do
+  fizbuzz = fn
+    0, 0, _ -> "Fizzbuzz"
+    0, _, _ -> "Fizz"
+    _, 0, _ -> "Buzz"
+    _, _, c -> c
+  end
+end
