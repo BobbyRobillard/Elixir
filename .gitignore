@@ -5,7 +5,7 @@
 # OS Related
 .DS_Store
 
-# Elixir Files
+# Elixir Files & Erlang Crash Files
 *.dump
 
 # 2019.07.07 - RCR
