@@ -1,10 +1,9 @@
-defmodule LargestPrime do
+defmodule Prime do
+
   # ----------------------------------------------------------
   defp find_factors(num), do: _find_factors(num, 2, [])
 
   defp _find_factors(num, at, factors) do
-    # Functions with potential exceptions can't be used as guard clauses
-    # ------------------------------------------------------------------
     # Cool little trick to reduce execution time
     # https://www.youtube.com/watch?v=oFahMlzI-Ic
     if at > :math.sqrt(num) do
@@ -22,24 +21,22 @@ defmodule LargestPrime do
     end
   end
   # ----------------------------------------------------------
-  defp get_largest_prime([]), do: "No Primes"
+  def find(num), do: _find(num, 2, 0)
 
-  defp get_largest_prime([head|tail]) do
-    case find_factors(Kernel.trunc(head)) do # Check if head is prime
-      [] -> head
-      _ -> get_largest_prime(tail)
+  def _find(num, curr, num_primes) do
+    case find_factors(curr) do # Check if curr is prime
+      [] ->   (if num_primes + 1 == num do
+                curr
+              else
+                _find(num, curr + 1, num_primes + 1)
+              end)
+      _ -> _find(num, curr + 1, num_primes)
     end
   end
   # ----------------------------------------------------------
-  def find(num) do # Find largest prime
-    find_factors(num)
-    |> Enum.sort(&(&1 > &2))
-    |> get_largest_prime
-    |> IO.puts
-  end
 end
 
 # Main execution of the program
-IO.gets("Number to find largest prime of: ")
-|> String.trim |> String.to_integer |> LargestPrime.find
+IO.gets("Find which prime: ")
+|> String.trim |> String.to_integer |> Prime.find
 |> IO.puts
