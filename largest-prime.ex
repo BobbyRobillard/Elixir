@@ -13,7 +13,6 @@ defmodule LargestPrime do
   end
 
   defp is_prime(num) do
-    factors = find_factors(num)
     case find_factors(num) do
       [] -> True
       [_head|_tail]  -> False
