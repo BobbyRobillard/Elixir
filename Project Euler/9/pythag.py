@@ -4,9 +4,6 @@ i, j, k = 0, 0, 0
 
 
 def is_triplet(a, b, c):
-    # print("Pow a: " + str(math.pow(a, 2)))
-    # print("Pow b: " + str(math.pow(b, 2)))
-    # print("Pow c: " + str(math.pow(c, 2)))
     if (math.pow(a, 2) + math.pow(b, 2) == math.pow(c, 2)
         or math.pow(a, 2) + math.pow(c, 2) == math.pow(b, 2)
             or math.pow(b, 2) + math.pow(c, 2) == math.pow(a, 2)):
