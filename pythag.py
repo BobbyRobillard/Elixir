@@ -19,12 +19,10 @@ def is_triplet(a, b, c):
 for i in range(1, 1000):
     for j in range(1, 1000):
         for k in range(1, 1000):
-            if i + j + k < 1000:
+            if i + j + k != 1000:
                 continue
 
             if is_triplet(i, j, k):
-                print("Triplet: {0}, {1}, {2}.".format(str(i), str(j), str(k)))
-                if i + j + k == 1000:
-                    print("Found")
-                    print(str(i*j*k))
-                    break
+                print("Found")
+                print(str(i*j*k))
+                break
