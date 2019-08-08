@@ -22,17 +22,19 @@ defmodule DivisibleTriangular do
     end
   end
 
-  def find(num_divisors), do: _find(num_divisors, 1, 0)
+  def find(num_divisors), do: _find(num_divisors, 1)
 
-  defp _find(num_divisors, curr, curr_sum) do
-    # IO.inspect binding()
-    new_sum = curr + curr_sum
-    factors = find_factors new_sum
+  defp _find(num_divisors, curr) do
+    sum = Enum.sum 1..curr
+
+    factors = find_factors sum
+
     num_factors = Enum.count factors
-    if num_factors == num_divisors do
-      new_sum
+
+    if num_factors >= num_divisors do
+      sum
     else
-      _find(num_divisors, curr + 1, new_sum)
+      _find(num_divisors, curr + 1)
     end
 
   end
