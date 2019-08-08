@@ -27,16 +27,11 @@ defmodule DivisibleTriangular do
   defp _find(num_divisors, curr) do
     sum = Enum.sum 1..curr
 
-    factors = find_factors sum
+    num_factors = find_factors(sum) |> Enum.count
 
-    num_factors = Enum.count factors
-
-    if num_factors >= num_divisors do
-      sum
-    else
-      _find(num_divisors, curr + 1)
+    if num_factors >= num_divisors do sum
+    else _find(num_divisors, curr + 1)
     end
-
   end
 
 end
