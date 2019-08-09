@@ -1,7 +1,7 @@
 defmodule CircularPrime do
   def find_amount do
     x =
-    2..100
+    2..1_000_000
     |> Enum.map_reduce([], fn n, acc -> add_if_prime(n, acc) end)
     |> elem(1)
     |> Enum.map_reduce([], fn n, acc -> add_if_circular(n, acc) end)
@@ -11,13 +11,25 @@ defmodule CircularPrime do
   end
 
   defp add_if_prime(x, acc) do
-    case find_factors x do
-      [] -> {x, acc ++ [x]}
-       _ -> {x, acc}
-    end
+     case has_factors x do
+        :false -> {x, acc ++ [x]}
+        :true -> {x, acc}
+     end
   end
 
   defp add_if_circular(x, acc) do {x, acc ++ [x]} end
+
+  defp has_factors(x) do
+     if rem(x, 2) == 0 or rem(x, 3) == 0
+       or rem(x, 5) == 0 or rem(x, 7) == 0 do
+         :true
+     else
+        case find_factors(x) do
+        [] -> :false
+        _  -> :true
+      end
+    end
+  end
 
   defp find_factors(num), do: _find_factors(num, 2, [])
 
@@ -36,6 +48,7 @@ defmodule CircularPrime do
       end
     end
   end
+
 end
 
 # Main execution of the program
