@@ -15,10 +15,9 @@ defmodule DigitFactorial do
     |> Enum.sum
   end
 
-  def factorial(0), do: 1
-
-  def factorial(n) when n > 0 do
-    n * factorial(n - 1)
+  def factorial(n) do
+    1..n
+    |> Enum.reduce(1, fn x, acc -> acc * x end)
   end
 
 end
