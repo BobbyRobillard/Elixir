@@ -1,13 +1,10 @@
 defmodule Truncatable do
 
   def primes do
-    truncs_list = 11..1000000
+    11..1000000
     |> Enum.reduce([], fn x, acc -> (if ! has_factors(x) or x == 2 do acc ++ [x] else acc end) end)
     |> Enum.reduce([], fn x, acc -> (if is_truncatable(x) do acc ++ [x] else acc end) end)
-    num_truncs = Enum.count truncs_list
-    sum = Enum.sum truncs_list
-    IO.inspect binding()
-    sum
+    |> Enum.sum
   end
 
   def is_truncatable(x) do
