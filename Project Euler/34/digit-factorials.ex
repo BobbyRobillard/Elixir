@@ -1,25 +1,18 @@
 defmodule DigitFactorial do
 
-  def run(n), do: _run(n, [])
-
-  def _run(2, result) do
-    Enum.sum(result)
+  def run(n) do
+    3..n
+    |> Enum.reduce(0, fn x, acc -> (if x == sum_digit_factorials(x) do acc + x
+                                    else acc end) end)
   end
 
-  def _run(n, result) do
-    if n == Enum.sum(digit_factorials n) do
-      _run(n - 1, result ++ [n])
-    else
-      _run(n - 1, result)
-    end
-  end
-
-  def digit_factorials(n) do
+  def sum_digit_factorials(n) do
     Integer.to_string(n)
     |> String.split("")
     |> List.delete_at(0)
     |> List.delete_at(-1)
     |> Enum.map(&(factorial(String.to_integer &1)))
+    |> Enum.sum
   end
 
   def factorial(0), do: 1
@@ -30,5 +23,5 @@ defmodule DigitFactorial do
 
 end
 
-DigitFactorial.run(9_999_999)
+DigitFactorial.run(1_000_000)
 |> IO.puts
