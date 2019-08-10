@@ -7,8 +7,12 @@ defmodule Truncatable do
     |> Enum.sum
   end
 
-  def is_truncatable(_x) do
-    :true
+  def is_truncatable(x) do
+    if left_to_right(x) and right_to_left(x) do
+      :true
+    else
+      :false
+    end
   end
 
   defp has_factors(x) do
@@ -16,7 +20,15 @@ defmodule Truncatable do
      |> Enum.any?(fn n -> rem(x, n) == 0 end)
   end
 
+  def left_to_right(_x) do
+    :true
+  end
+
+  def right_to_left(_x) do
+    :true
+  end
+
 end
 
 Truncatable.primes
-# |> IO.puts
+|> IO.puts
