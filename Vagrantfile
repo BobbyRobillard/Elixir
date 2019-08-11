@@ -13,6 +13,7 @@ $shell = <<-'CONTENTS'
   apt-get update
   apt-get install -y esl-erlang
   apt-get install -y elixir
+  apt install -y openssl
 CONTENTS
 
 ###############
