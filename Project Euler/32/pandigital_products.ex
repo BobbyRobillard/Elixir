@@ -1,4 +1,4 @@
-defmodule PandigitalPrimes do
+defmodule PandigitalProducts do
   def sum do
     1..2000
     |> Enum.reduce([], fn x, acc -> acc ++ pandigital(x) end)
