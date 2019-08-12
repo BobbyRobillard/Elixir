@@ -37,5 +37,5 @@ defmodule PandigitalProducts do
 
 end
 
-PandigitalPrimes.sum
+PandigitalProducts.sum
 |> IO.puts
